@@ -1,0 +1,129 @@
+"""
+HAND GESTURE RECOGNITION SYSTEM - PSEUDOCODE
+Version: 1.2.0
+Author: JT
+
+OBJECTIVE:
+This system detects and classifies hand gestures in real-time using computer vision.
+The system can:
+- Detect both hands simultaneously
+- Calculate confidence levels for each finger
+- Recognize 13 different gestures
+- Display results in mirror mode
+
+REQUIREMENTS:
+- Computer Vision Library (like OpenCV)
+- Hand Detection Library (like MediaPipe)
+- Basic Math Operations
+"""
+
+# Import required libraries
+IMPORT_COMPUTER_VISION_LIBRARY
+IMPORT_HAND_DETECTION_LIBRARY
+IMPORT_MATH_LIBRARY
+
+# Initialize hand detection configuration
+INITIALIZE_HAND_DETECTION_SYSTEM
+
+def calculate_point_distance(point1, point2):
+    """
+    Calculate Euclidean distance between two points
+    Returns: float (distance)
+    """
+    CALCULATE_EUCLIDEAN_DISTANCE
+    RETURN_DISTANCE
+
+def check_finger_position(hand_data, finger_tip, finger_middle, wrist, hand_side):
+    """
+    Determine if a finger is extended
+    Parameters:
+    - hand_data: landmarks of the hand
+    - finger_tip: ID of fingertip point
+    - finger_middle: ID of middle finger joint
+    - wrist: ID of wrist point
+    - hand_side: 'left' or 'right'
+    Returns: boolean (is_extended)
+    """
+    IF_THUMB:
+        CHECK_HORIZONTAL_POSITION
+    ELSE:
+        CHECK_VERTICAL_POSITION
+    
+    RETURN_FINGER_STATUS
+
+def calculate_gesture_confidence(tip, middle, wrist, is_thumb):
+    """
+    Calculate confidence percentage (0-100%)
+    Different calculations for thumb vs other fingers
+    Returns: integer (confidence_percentage)
+    """
+    IF_THUMB:
+        CALCULATE_HORIZONTAL_CONFIDENCE
+    ELSE:
+        CALCULATE_VERTICAL_CONFIDENCE
+    
+    RETURN_CONFIDENCE_PERCENTAGE
+
+def recognize_gesture(finger_status):
+    """
+    Gesture recognition based on finger positions
+    Input: List[bool] - Status of each finger [thumb, index, middle, ring, pinky]
+    Returns: string (gesture_name)
+    
+    Supported Gestures:
+    - Single finger gestures (5 types)
+    - Two finger combinations (4 types)
+    - Three finger combinations (2 types)
+    - Four finger combinations (1 type)
+    - Full hand gesture (1 type)
+    """
+    MATCH_FINGER_PATTERN_TO_GESTURE_DATABASE
+    RETURN_GESTURE_NAME
+
+def main():
+    """
+    Main execution loop
+    """
+    # Initialize video capture
+    SETUP_CAMERA_CAPTURE
+    
+    # Main processing loop
+    WHILE_CAMERA_IS_ACTIVE:
+        # Capture and process frame
+        GET_FRAME
+        MIRROR_FLIP_IMAGE
+        CONVERT_COLOR_SPACE
+        
+        # Detect hands
+        IF_HANDS_DETECTED:
+            FOR_EACH_HAND:
+                # Process finger positions
+                INITIALIZE_FINGER_ARRAYS
+                
+                FOR_EACH_FINGER:
+                    CHECK_FINGER_EXTENSION
+                    CALCULATE_CONFIDENCE
+                    STORE_RESULTS
+                
+                # Draw visual feedback
+                DRAW_HAND_LANDMARKS
+                
+                # Display information
+                IF_LEFT_HAND:
+                    SHOW_LEFT_HAND_INFO
+                ELSE:
+                    SHOW_RIGHT_HAND_INFO
+                
+                # Show confidence levels
+                DISPLAY_CONFIDENCE_METRICS
+        
+        # Display result
+        SHOW_OUTPUT_WINDOW
+        CHECK_EXIT_CONDITION
+
+    # Cleanup
+    RELEASE_RESOURCES
+
+# Entry point
+IF_MAIN:
+    RUN_MAIN()
